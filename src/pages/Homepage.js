@@ -1,37 +1,26 @@
 // src/pages/Homepage.js
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
-import axios from "axios";
 
-const API_URL = `https://codaisseur-coders-network.herokuapp.com`;
+import { selectFeedPosts } from "../store/feed/selectors";
+import { fetchPosts } from "../store/feed/actions";
+
+import "./Homepage.css";
 
 export default function Homepage() {
-  const [data, setData] = useState({
-    loading: true,
-    posts: [],
-  });
+  const dispatch = useDispatch();
 
-  async function fetchPosts() {
-    setData({ ...data, loading: true }); //before fetching data, loading is set to true
-
-    const response = await axios.get(`${API_URL}/posts`);
-
-    const posts = response.data.rows;
-
-    setData({
-      loading: false, //once the data is fetched, loading is set to false
-      posts: posts,
-    });
-  }
+  const posts = useSelector(selectFeedPosts);
 
   useEffect(() => {
-    fetchPosts();
+    dispatch(fetchPosts);
   }, []);
 
   return (
     <div style={{ marginLeft: 20 }}>
       <h2>Posts</h2>
-      {data.posts.map((post) => {
+      {posts.map((post) => {
         return (
           <div key={post.id}>
             <h3>{post.title}</h3>
