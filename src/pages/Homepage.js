@@ -39,6 +39,7 @@ export default function Homepage() {
           </div>
         );
       })}
+      <button onClick={() => dispatch(fetchPosts)}>Load more</button>
     </div>
   );
 }
