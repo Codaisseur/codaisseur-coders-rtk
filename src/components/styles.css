@@ -1,0 +1,21 @@
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 30px;
+  padding-left: 30px;
+  background-color: lightsalmon;
+}
+
+.button-container {
+  display: flex;
+  align-items: center;
+}
+
+.welcome-text {
+  margin-right: 30px;
+}
+
+.logo-link {
+  text-decoration: none;
+  color: black;
+}
