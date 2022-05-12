@@ -13,12 +13,16 @@ export const authSlice = createSlice({
     startLoading: (state) => {
       state.loading = true;
     },
-    saveToken: (state, action) => {
-      state.token = action.payload;
+    saveLoginData: (state, action) => {
+      state.token = action.payload.token;
+      state.user = action.payload.user;
+    },
+    logout: (state) => {
+      return { ...initialState };
     },
   },
 });
 
-export const { startLoading, saveToken } = authSlice.actions;
+export const { startLoading, saveLoginData, logout } = authSlice.actions;
 
 export default authSlice.reducer;
