@@ -4,6 +4,7 @@ import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Homepage from "./pages/Homepage";
 import PostPage from "./pages/PostPage";
+import LoginPage from "./pages/LoginPage";
 
 export default function App() {
   return (
@@ -12,6 +13,7 @@ export default function App() {
         {/* more pages to be added here later */}
         <Route path="/" element={<Homepage />} />
         <Route path="/post/:id" element={<PostPage />} />
+        <Route path="/login" element={<LoginPage />} />
       </Routes>
     </div>
   );
